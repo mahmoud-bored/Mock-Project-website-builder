@@ -248,7 +248,9 @@ aside{
 }
 .creation-panel{
     width: 1920px;
+    min-width: 1920px;
     height: 1080px;
+    min-height: 1080px;
     background-color: white;
     transform: scale(0.5);
     
