@@ -1,0 +1,255 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --navbar-height: 65px;
+    --aside-list-width: 300px;
+}
+body{
+    height: 100%;
+    width: 100%;
+    color: white;
+    overflow: hidden;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.page{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+.navbar{
+    position: fixed;
+    top: calc(100vh - 65px);
+    height: var(--navbar-height);
+    width: 100%;
+    background-color: #2A2A2A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+.nav-link{
+    height: inherit;
+    transition: background-color 0.3s;
+}
+.nav-link > li{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+}
+.nav-link:hover{
+    background-color: #474747;
+}
+.nav-link > li > p{
+    margin-top: 5px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.nav-link:hover > li > p{
+    opacity: 1;
+}
+.nav-link > li > svg{
+    transform: translateY(10px);
+    transition: transform 0.3s;
+}
+.nav-link:hover > li > svg{
+    transform: translateY(1px);
+}
+.nav-link-activated{
+    animation: nav-link-activated 0.3s forwards;
+}
+.nav-link-text-activated{
+    animation: nav-link-text-activated 0.3s forwards;
+}
+.nav-link-icon-activated{
+    animation: nav-link-icon-activated 0.3s forwards;
+}
+@keyframes nav-link-activated {
+    to{
+        background-color: #3d3d3d;
+    }
+}
+@keyframes nav-link-text-activated {
+    to{
+        opacity: 1;
+    }
+}
+@keyframes nav-link-icon-activated {
+    to{
+        transform: translateY(1px);
+    }
+}
+/*
+####################################################
+##                                                ##
+##   ##   ##      ##      ####    ####  #######   ##
+##   ##   ##    ##  ##    ##  ####  ##  ##        ##
+##   #######  ##      ##  ##   ##   ##  #######   ##
+##   ##   ##    ##  ##    ##        ##  ##        ##
+##   ##   ##      ##      ##        ##  #######   ##
+##                                                ##
+####################################################
+*/
+
+
+.home{
+    display: none;
+}
+
+
+
+
+
+
+
+
+/*
+#############################################################
+##                                                         ##
+##   ####     ######  ########  ##  ########  ####    ##   ##
+##   ##  ##   ##      ##            ##    ##  ## ##   ##   ##
+##   ##   ##  ######  ########  ##  ########  ##  ##  ##   ##
+##   ##  ##   ##            ##  ##        ##  ##   ## ##   ##
+##   ####     ######  ########  ##  ########  ##    ####   ##
+##                                                         ##
+#############################################################
+*/
+
+
+.design{
+    height: calc(100vh - var(--navbar-height));
+    width: 100vw;
+    display: block;
+    background-color: #474747;
+
+    /* z-index: -1; */
+}
+/* ASIDE PANEL*/
+aside{
+    top: 0;
+    height: calc(100vh - var(--navbar-height));
+    position: absolute;
+    width: calc(var(
+    --aside-list-width) + 30px);
+    /* animation: aside-list-open 0.5s forwards ease-in-out; */
+    right: 0;
+    transform: translateX(var(--aside-list-width));
+    z-index: 1;
+}
+.pointer{
+    height: inherit;
+    width: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #393939;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    transform: translateX(-300px);
+}
+.pointer:hover{
+    background-color: #2b2b2b;
+}
+.left-arrow{
+    display: block;
+}
+.right-arrow{
+    display: none;
+}
+.html-list,
+.css-list{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: inherit;
+    width: var(--aside-list-width);
+    background-color: #707070;
+}
+.html-list-icon,
+.css-list-icon{
+    width: 50%;
+    height: 89px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.html-list{
+    clip-path: polygon(100% 90px, 100% 100%, 0% 100%, 0 0, 50% 0, 50% 90px);
+    background-color: #444444;
+    z-index: 2;
+}
+.html-list-icon {
+    
+}
+.css-list{
+    clip-path: polygon(100% 0%, 100% 100%, 0% 100%, 0 90px, 50% 90px, 50% 0%);
+    background-color: #707070;
+    z-index: 1;
+}
+.css-list-icon{
+    margin-left: 50%;
+}
+.aside-list-activate{
+    background-color: #444444;
+    z-index: 2;
+}
+.aside-list-disable{
+    cursor: pointer;
+    background-color: #595959;
+    z-index: 1;
+    transition: background-color 0.2s;
+}
+.aside-list-disable:hover{
+    background-color: #414141;
+}
+.aside-list-open{
+    animation: aside-list-open 0.5s forwards ease-in-out;
+}
+@keyframes aside-list-open {
+    to{
+        transform: translateX(var(--aside-list-width) * -1);
+    }
+}
+.aside-list-close{
+    animation: aside-list-close 0.5s forwards ease-in-out;
+}
+@keyframes aside-list-close {
+    from{
+        transform: translateX(var(--aside-list-width) * -1);
+    }
+    to{
+        transform: translateX(var(--aside-list-width));
+    }
+}
+
+/* GENERATED CONTENT*/
+.workspace-container{
+    overflow: scroll;
+    position: relative;
+    max-width: calc(100vw - 30px);
+    max-height: calc(100vh - var(--navbar-height));
+
+}
+.workspace{
+    position: relative;
+    margin-inline: auto;
+    cursor: move;
+    background-image: url("assets/images/grid-background.svg");
+}
+.creation-panel{
+    width: 1920px;
+    height: 1080px;
+    background-color: white;
+    transform: scale(0.5);
+    
+}
