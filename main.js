@@ -1,48 +1,27 @@
 // """Root"""
 function select(pointer) {
-    return document.querySelector(`${pointer}`)
+  return document.querySelector(`${pointer}`)
 }
 function addClass(pointerClass, className){
-    document.querySelector(`${pointerClass}`).classList.add(`${className}`)
+  document.querySelector(`${pointerClass}`).classList.add(`${className}`)
 }
 function removeClass(pointerClass, className){
-    document.querySelector(`${pointerClass}`).classList.remove(`${className}`)
+  document.querySelector(`${pointerClass}`).classList.remove(`${className}`)
 }
 // """Root End"""
 
 
 function aside_list_open(){
-    document.querySelector(".right-arrow").style.display = "block"
-    document.querySelector(".left-arrow").style.display = "none"
-    removeClass("aside", "aside-list-close")
-    addClass("aside", "aside-list-open")
+  document.querySelector(".right-arrow").style.display = "block"
+  document.querySelector(".left-arrow").style.display = "none"
+  removeClass("aside", "aside-list-close")
+  addClass("aside", "aside-list-open")
 }
-async function aside_list_close(){
-    function resolveAfter2Seconds(x) {
-        return new Promise(resolve => {
-          setTimeout(() => {
-            resolve(
-
-                )
-          }, 500);
-        });
-      }
-      
-        await resolveAfter2Seconds();
-        document.querySelector('.creation-panel-container').onmouseover = () => {
-            document.querySelector(".right-arrow").style.display = "none"
-            document.querySelector(".left-arrow").style.display = "block"
-            addClass("aside", "aside-list-close")
-            removeClass("aside", "aside-list-open")
-            console.log('out')
-      
-        }
-
-    // await setTimeout(() => {
-
-    // },500)
-
-
+function aside_list_close() {
+  document.querySelector(".right-arrow").style.display = "none"
+  document.querySelector(".left-arrow").style.display = "block"
+  addClass("aside", "aside-list-close")
+  removeClass("aside", "aside-list-open")
 }
 function show_list(listPointer) {
     switch (listPointer) {
@@ -71,7 +50,7 @@ function show_list(listPointer) {
 
 
 
-// DRAG CREATION PANEL
+// DRAG WORKSPACE
 
 dragElement(document.querySelector(".workspace"));
 
