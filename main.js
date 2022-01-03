@@ -78,10 +78,10 @@ dragElement(document.querySelector(".workspace"));
 function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   if (document.querySelector(elmnt.class)) {
-    /* if present, the header is where you move the DIV from:*/
+    /*: if present, the workspace :*/
     document.querySelector(elmnt.class).onmousedown = dragMouseDown;
   } else {
-    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    /* otherwise, move the workspace from anywhere inside the workspace:*/
     elmnt.onmousedown = dragMouseDown;
   }
 
@@ -94,11 +94,14 @@ function dragElement(elmnt) {
     document.onmouseup = closeDragElement;
     // call a function whenever the cursor moves:
     document.onmousemove = elementDrag;
+    // change the cursor
+    select('.workspace').style.cursor = 'grabbing';
   }
 
   function elementDrag(e) {
     e = e || window.event;
     e.preventDefault();
+
     // calculate the new cursor position:
     pos1 = pos3 - e.clientX;
     pos2 = pos4 - e.clientY;
@@ -110,6 +113,8 @@ function dragElement(elmnt) {
   }
 
   function closeDragElement() {
+    // set the cursor back to normal
+    select('.workspace').style.cursor = 'grab';
     /* stop moving when mouse button is released:*/
     document.onmouseup = null;
     document.onmousemove = null;
