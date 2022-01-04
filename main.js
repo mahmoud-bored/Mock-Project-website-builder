@@ -1,25 +1,25 @@
-// """Root"""
+// """Roots"""
 function select(pointer) {
   return document.querySelector(`${pointer}`)
 }
 function addClass(pointerClass, className){
-  document.querySelector(`${pointerClass}`).classList.add(`${className}`)
+  select(`${pointerClass}`).classList.add(`${className}`)
 }
 function removeClass(pointerClass, className){
-  document.querySelector(`${pointerClass}`).classList.remove(`${className}`)
+  select(`${pointerClass}`).classList.remove(`${className}`)
 }
 // """Root End"""
 
-
+// OPEN & CLOSE THE DESIGN's CODE LISTS
 function aside_list_open(){
-  document.querySelector(".right-arrow").style.display = "block"
-  document.querySelector(".left-arrow").style.display = "none"
+  select(".right-arrow").style.display = "block"
+  select(".left-arrow").style.display = "none"
   removeClass("aside", "aside-list-close")
   addClass("aside", "aside-list-open")
 }
 function aside_list_close() {
-  document.querySelector(".right-arrow").style.display = "none"
-  document.querySelector(".left-arrow").style.display = "block"
+  select(".right-arrow").style.display = "none"
+  select(".left-arrow").style.display = "block"
   addClass("aside", "aside-list-close")
   removeClass("aside", "aside-list-open")
 }
@@ -42,25 +42,17 @@ function show_list(listPointer) {
     }
 }
 
-
-
-
-
-
-
-
-
 // DRAG WORKSPACE
 
-dragElement(document.querySelector(".workspace"));
+dragElement(select(".workspace"));
 
 function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-  if (document.querySelector(elmnt.class)) {
+  if (select(elmnt.class)) {
     /*: if present, the workspace :*/
-    document.querySelector(elmnt.class).onmousedown = dragMouseDown;
+    select(elmnt.class).onmousedown = dragMouseDown;
   } else {
-    /* otherwise, move the workspace from anywhere inside the workspace:*/
+    /*: otherwise, move the workspace from anywhere inside the workspace:*/
     elmnt.onmousedown = dragMouseDown;
   }
 
@@ -99,3 +91,17 @@ function dragElement(elmnt) {
     document.onmousemove = null;
   }
 }
+
+// WORKSPACE ZOOMING USING SCROLL WHEEL
+function zoomWorkspace(e) {
+  e.preventDefault();
+  // if condition to Restrict the scale ** if it got too small **
+  if (scale > 25 || (scale <= 25 && (e.deltaY * -1) > 1)) {
+    scale += e.deltaY * -0.05;
+    // Apply scale transform
+    el.style.transform = `scale(${scale}%)`;
+  }
+}
+let scale = 100;
+const el = select('.workspace');
+el.onwheel = zoomWorkspace;

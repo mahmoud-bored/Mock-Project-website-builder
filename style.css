@@ -295,6 +295,7 @@ aside{
     margin-inline: auto;
     cursor: grab;
     background-image: url("assets/images/grid-background.svg");
+    transform: scale(1);
 }
 .creation-panel{
     width: 1920px;
